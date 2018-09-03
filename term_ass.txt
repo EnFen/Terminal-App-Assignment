@@ -1,0 +1,23 @@
+﻿Ideas
+1. Ledger app.✓✓✓✓
+2. ROYGBIV Screensaver (animation that changes colour and bounces all over the screen)⤫
+3. Shopping cart.✓
+4. (currency converter overlay for shopping websites)⤫
+
+
+
+
+Design (Leger App)
+We have chosen to proceed with the Ledger app, we want it to have the following. 
+* Date of transaction.
+* The account the transaction has occurred.
+* The amount spent.
+* Save values between sessions.
+* Uses OOP.
+Out of scope.
+* Double entry accounting
+* case/numeric/spelling detection
+
+
+User stories
+Add to Trello.
