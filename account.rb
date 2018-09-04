@@ -19,10 +19,16 @@ class Account
         File.write( 'user_data.txt', JSON.dump( @user_data ) )
     end
 
-    #Creates a transaction entry
+    # Converts date string to a Time object
+    def date_str_to_time(date_str)
+        Time.new('20' + date_str[6..7], date_str[3..4], date_str[0..1])
+    end
+
+    # Creates a transaction entry
     def create_transaction( trans_date, trans_account, trans_value )
+        date = date_str_to_time(trans_date)
         transaction =[]
-        transaction.push( trans_date, trans_account, trans_value )
+        transaction.push( date, trans_account, trans_value )
     end
 
 end
