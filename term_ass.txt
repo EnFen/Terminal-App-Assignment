@@ -16,11 +16,17 @@ We want it to have the following.
 * The amount spent.
 * Save values between sessions.
 * Uses OOP.
-Out of scope.
+Out of scope (possible future extensions to functionality)
 * Double entry accounting
 * case/numeric/spelling detection
-* multiple users
+* multiple users (or multiple accounts)
 * acessibility features
+* link to a budget to see whether account values have exceeded or met expectations
+* Include "change and delete" functionality for transactions
+
+Ethical/Legal/Cultural Considerations
+* Give credit for code snippets where appropriate
+* Consider privacy of users when storing financial information - this will be stored in a plain text file!!
 
 
 User stories
