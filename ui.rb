@@ -43,7 +43,7 @@ class UI
     end
 
     #Takes input for the content of table titles, headings, and rows, and formats a table which is output to the console
-    def table(row_items_as_array_of_arrays, headings_as_array = [], title = nil)
+    def table(rows, headings = [], title = nil)
 
         #Formats title; centred on one line, color = cyan #Note: terminal-table breaks when title is colorized
         unless !title
@@ -58,7 +58,7 @@ class UI
 
         #Formats headings; right aligns 0th value, centres others, color = cyan
         unless headings_as_array == []
-            headings_table = Terminal::Table.new :rows => [headings_as_array]
+            headings_table = Terminal::Table.new :rows => [headings]
             headings_table.style = {   :width => 148,
                                     :border_x => '='.colorize(:cyan), 
                                     :border_y => '|'.colorize(:cyan),
@@ -70,7 +70,7 @@ class UI
         end
 
         #Formats body content; right aligns 0th value, centres others, color = cyan
-        body_table = Terminal::Table.new :rows => row_items_as_array_of_arrays
+        body_table = Terminal::Table.new :rows => rows
         body_table.style = {   :width => 148,
                                 :border_x => '='.colorize(:cyan), 
                                 :border_y => '|'.colorize(:cyan),
