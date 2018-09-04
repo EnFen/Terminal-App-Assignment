@@ -1,14 +1,16 @@
 ﻿Ideas
-1. Ledger app.✓✓✓✓
+1. Ledger app (app which stores user expense history against known accounts).✓✓✓✓
 2. ROYGBIV Screensaver (animation that changes colour and bounces all over the screen)⤫
-3. Shopping cart.✓
+3. Shopping cart.(adds items, quantities, costs, and then provides a summary of shopping cart contents)✓
 4. (currency converter overlay for shopping websites)⤫
 
 
 
 
-Design (Leger App)
-We have chosen to proceed with the Ledger app, we want it to have the following. 
+Design (Ledger App)
+We have chosen to proceed with the Ledger app, because it would best show the Ruby skills we have learned so far
+
+We want it to have the following. 
 * Date of transaction.
 * The account the transaction has occurred.
 * The amount spent.
@@ -17,6 +19,8 @@ We have chosen to proceed with the Ledger app, we want it to have the following.
 Out of scope.
 * Double entry accounting
 * case/numeric/spelling detection
+* multiple users
+* acessibility features
 
 
 User stories
