@@ -23,8 +23,24 @@ requires 'colorize' gem
 2. 
 
 ### Screenshots
+![Ledger App Screenshot ](/docs/img/ledger_app_screenshot.JPG)
 
 ## Design and Planning Process
+#### Brainstorming
+Please see:
+https://github.com/EnFen/Terminal-App-Assignment/blob/master/docs/term_ass.txt
+
+#### Flowchart of user journey through app
+![User Journey Flowchart ](/docs/img/ledger_design.jpg)
+
+#### Trello Boards
+![Trello 1 ](/docs/img/trello_screenshots/trello_1.JPG)
+![Trello 2 ](/docs/img/trello_screenshots/trello_2.JPG)
+![Trello 3 ](/docs/img/trello_screenshots/trello_3.JPG)
+![Trello 4 ](/docs/img/trello_screenshots/trello_4.JPG)
+![Trello 5 ](/docs/img/trello_screenshots/trello_5.JPG)
+
+
 
 
 
