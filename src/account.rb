@@ -27,11 +27,11 @@ class Account
 
     end
 
-    # Gives user options for how to use their account
+    # Gives user the options for how to use their account
     def options_menu
         menu_choice = ''
         while menu_choice != 'exit'
-            menu_choice = @interface.menu( ['What would you like to do today?','' , 'Enter "1" to enter a new transaction', 'Enter "2" to view the history for an account', 'Enter "3" to see the balance sheet for all accounts', 'Or enter "exit" to exit the app'] )
+            menu_choice = @interface.menu( ['What would you like to do?','' , 'Enter "1" to enter a new transaction', 'Enter "2" to view the history for an account', 'Enter "3" to see the balance sheet for all accounts', 'Or enter "exit" to exit the app'] )
 
         case menu_choice
             when '1'
@@ -57,14 +57,61 @@ class Account
 
     # Prompts user for data to be used to create transaction data
     def transaction_data_input
-        @trans_date = @interface.prompt('Please enter the date of the transaction (as dd/mm/yy)')
+        
+        # Accepts user input for transaction date and validates for dd/mm/yy format
+        begin
+        retries ||= 0   
+            @trans_date = @interface.prompt('Please enter the date of the transaction (as dd/mm/yy)')
+            raise IncorrectDateFormatError unless @trans_date.date_format?
+            
+        rescue IncorrectDateFormatError
+            @interface.message('You are required to enter date in dd/mm/yy format')
+            if (retries += 1) < 3 
+                retry
+            else options_menu 
+            end
+
+        rescue
+            @interface.message('Sorry. An error occurred with your input.')
+            if (retries += 1) < 3 
+                retry
+            else options_menu 
+            end
+            
+        end
+
+        # Accepts user input for transaction account category. Accounts can take any name (?)  
         @trans_account = @interface.prompt('Please enter an account category for the transacion').capitalize
-        @trans_value = @interface.prompt('Please enter the value of the transaction $' )
+
+        # Accepts user input for transaction value and validates it as an integer or float 
+        begin
+        retries ||= 0
+
+            @trans_value = @interface.prompt('Please enter the value of the transaction $' )
+            raise NonNumericArgumentError unless @trans_value.is_numeric?
+            
+        rescue NonNumericArgumentError
+            @interface.message('You are required to enter a whole number, or decimal for your value.')
+            if (retries += 1) < 3 
+                retry
+            else options_menu 
+            end
+
+        rescue
+            @interface.message('Sorry. An error occurred with your input.')
+            if (retries += 1) < 3 
+                retry
+            else options_menu 
+            end
+            
+        end
+
         store_transaction
+
         @interface.message('You have successfully entered your transaction.')
     end
 
-    # # Converts date string to a Time object
+    # # Converts date string to a Time object => NEED TO FIGURE OUT HOW TO CONVERT STRING TIMES BACK TO TIME OBJECT AFTER JSON PARSE
     # def date_str_to_time(date_str)
     #     Time.new('20' + date_str[6..7], date_str[3..4], date_str[0..1])
 
