@@ -14,7 +14,7 @@ class Account
     # Reads stored user data from a text file
     def get_account_data
         begin
-            JSON.parse( File.read( 'user_data.txt' ), :symbolize_names => true )
+            JSON.parse( File.read( 'user_data.json' ), :symbolize_names => true )
         rescue
             []
         end
@@ -23,7 +23,7 @@ class Account
 
     # Writes user data to a text file
     def set_account_data
-        File.write( 'user_data.txt', JSON.dump( @user_data ) )
+        File.write( 'user_data.json', JSON.dump( @user_data ) )
 
     end
 
@@ -31,7 +31,7 @@ class Account
     def options_menu
         menu_choice = ''
         while menu_choice != 'exit'
-            menu_choice = @interface.menu( ['What would you like to do today?', 'Enter "1" to enter a new transaction', 'Enter "2" to view the history for an account', 'Enter "3" to see the balance sheet for all accounts', 'Or enter "exit" to exit the app'] )
+            menu_choice = @interface.menu( ['What would you like to do today?','' , 'Enter "1" to enter a new transaction', 'Enter "2" to view the history for an account', 'Enter "3" to see the balance sheet for all accounts', 'Or enter "exit" to exit the app'] )
 
         case menu_choice
             when '1'
@@ -58,7 +58,7 @@ class Account
     # Prompts user for data to be used to create transaction data
     def transaction_data_input
         @trans_date = @interface.prompt('Please enter the date of the transaction (as dd/mm/yy)')
-        @trans_account = @interface.prompt('Please enter an account for the transacion').capitalize
+        @trans_account = @interface.prompt('Please enter an account category for the transacion').capitalize
         @trans_value = @interface.prompt('Please enter the value of the transaction $' )
         store_transaction
         @interface.message('You have successfully entered your transaction.')
@@ -121,7 +121,6 @@ class Account
         balances
 
     end
-
 
     def exit_app
         exit
