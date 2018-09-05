@@ -32,6 +32,4 @@ class Account_Test < Test::Unit::TestCase
         user = Account.new
         assert_equal([['Rent', '$200.00'], ['Fuel', '$50.00']], user.balance_sheet( [ {date: '11/11/18', account: 'Rent', value: 100.0 }, {date: '18/11/18', account: 'Rent', value: 100.0 }, {date: '13/11/18', account: 'Fuel', value: 50.0 } ]) )
     end
-
-
 end
