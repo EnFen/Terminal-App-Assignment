@@ -35,7 +35,7 @@ class UI
     def message(input)
         start_line
         puts input.colorize(:light_blue)
-        sleep(2)
+        sleep(1.5)
     end
 
     # Takes input which is formatted into a readable list and output to the cosole
