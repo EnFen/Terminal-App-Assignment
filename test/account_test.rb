@@ -30,6 +30,4 @@ class Account_Test < Test::Unit::TestCase
     def test_balance_sheet
         
     end
-
-
 end
