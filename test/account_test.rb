@@ -23,13 +23,14 @@ class Account_Test < Test::Unit::TestCase
 
     # Should return the summed total of transactions in an account
     def test_account_total
-        
-
+        user = Account.new
+        assert_equal('$200.00', user.account_total( 'Rent', [ {date: '11/11/18', account: 'Rent', value: 100.0 }, {date: '18/11/18', account: 'Rent', value: 100.0 }, {date: '13/11/18', account: 'Fuel', value: 50.0 } ]) )
     end
 
     # Should return Account Name, and account totals for each month?
     def test_balance_sheet
-        
+        user = Account.new
+        assert_equal([['Rent', '$200.00'], ['Fuel', '$50.00']], user.balance_sheet( [ {date: '11/11/18', account: 'Rent', value: 100.0 }, {date: '18/11/18', account: 'Rent', value: 100.0 }, {date: '13/11/18', account: 'Fuel', value: 50.0 } ]) )
     end
 
 

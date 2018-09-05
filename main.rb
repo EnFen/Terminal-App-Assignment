@@ -9,4 +9,7 @@ app.message( "Welcomne to the Ledger App!" )
 # Much of the rest of the app can be run within the Account object
 user = Account.new
 
-app.message( "Thankyou for using the Ledger App!" )
+app.message( "Thank you for using the Ledger App!" )
+
+# TO DO
+# Confirm that amount entered for value is numerical with an error message

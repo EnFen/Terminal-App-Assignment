@@ -31,15 +31,18 @@ class Account
     def options_menu
         menu_choice = ''
         while menu_choice != 'exit'
-            menu_choice = @interface.menu( ['What would you like to do today?', 'Enter "1" to enter a new transaction', 'Enter "2" to view the history for an account', 'Enter "3" to see the balance sheet', 'Or enter "exit" to exit the app'] )
+            menu_choice = @interface.menu( ['What would you like to do today?', 'Enter "1" to enter a new transaction', 'Enter "2" to view the history for an account', 'Enter "3" to see the balance sheet for all accounts', 'Or enter "exit" to exit the app'] )
 
         case menu_choice
             when '1'
                 transaction_data_input
+
             when '2'
                 account = @interface.prompt('Which account would you like to view history for?')
-                account_history( account, @user_data )
+                @interface.table( account_history( account, @user_data), [ 'Date of Transaction', 'Amount' ] )
+
             when '3'
+                @interface.table( balance_sheet(@user_data) )
 
             when 'exit'
                 return
@@ -58,7 +61,7 @@ class Account
         @trans_account = @interface.prompt('Please enter an account for the transacion').capitalize
         @trans_value = @interface.prompt('Please enter the value of the transaction $' )
         store_transaction
-        @interface.message('Thank you. You have successfully entered your transaction.')
+        @interface.message('You have successfully entered your transaction.')
     end
 
     # # Converts date string to a Time object
@@ -82,16 +85,43 @@ class Account
 
     # Retrieves history of transactions for an account
     def account_history(account, user_data)
-        begin
-            @history = []
-            user_data.select { |trans| trans[:account] == account }.each do |selection|
-                @history << [ selection[:date], "$#{'%.2f' % selection[:value]}" ]
-            end 
-            @interface.table( @history, [ 'Date of Transaction', 'Amount' ] )
-        end
+        history = []
+        user_data.select { |trans| trans[:account] == account }.each do |selection|
+            history << [ selection[:date], "$#{'%.2f' % selection[:value]}" ]
+        end 
+        history
         
     end
-    
+
+    def account_total(account, user_data)
+        total = 0
+        account_name = user_data.select { |trans| trans[:account] == account }
+        account_name.each do |selection|
+            total += selection[:value].to_f
+        end 
+
+        "$#{'%.2f' % total}"
+
+    end
+
+    # Balance sheet
+    def balance_sheet(user_data)
+        accounts = []
+        for transaction in user_data
+            accounts << transaction[:account]
+        end
+        unique_accounts = accounts.uniq
+
+        balances = []
+        for account in unique_accounts
+            account_value = account_total(account, user_data)
+            balances << [ account, account_value]
+        end
+
+        balances
+
+    end
+
 
     def exit_app
         exit
@@ -101,6 +131,3 @@ class Account
 
 
 end
-
-app = Account.new
-app.options_menu

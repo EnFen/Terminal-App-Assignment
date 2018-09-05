@@ -17,7 +17,7 @@ class UI
     # Takes a prompt statement, which is output to the console, waits for user input, and then returns the input
     def prompt(input)
         input = input.strip
-            print (input.capitalize + ': ').colorize(:cyan)
+            print (input + ': ').colorize(:cyan)
         return gets.chomp
     end
 
@@ -34,7 +34,7 @@ class UI
     # Takes input which is output to the top of the console for 3 seconds before disappearing
     def message(input)
         start_line
-        puts input.capitalize.colorize(:cyan)
+        puts input.colorize(:cyan)
         sleep(2)
     end
 
@@ -63,8 +63,10 @@ class UI
         for column_no in 0...new_table.columns.length
             new_table.align_column(column_no, :center)
         end
-    
+        
+        puts empty_line
         puts new_table
+        prompt('Press "Enter" key to continue')
     end
 
 end

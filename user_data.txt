@@ -1,1 +1,1 @@
-[{"date":"11/11/18","account":"Rent","value":"100"},{"date":"18/11/18","account":"Rent","value":"100"}]
+[{"date":"11/11/18","account":"Rent","value":"100"},{"date":"18/11/18","account":"Rent","value":"100"},{"date":"14/05/18","account":"Groceries","value":"60.45"},{"date":"29/10/18","account":"Groceries","value":"50.99"},{"date":"03/03/17","account":"Food","value":"87.63"}]
