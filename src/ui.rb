@@ -16,6 +16,7 @@ class UI
 
     # Takes a prompt statement, which is output to the console, waits for user input, and then returns the input
     def prompt(input)
+        empty_line
         input = input.strip
             print (input + ': ').colorize(:light_blue)
         return gets.chomp
